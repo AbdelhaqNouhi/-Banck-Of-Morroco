@@ -1,6 +1,5 @@
 const asyncHandler = require('express-async-handler')
 
-
 const EmployeeModule = require('../Models/EmployeeModel');
 
 const GetAllEmployee = asyncHandler(async (req, res) => {
