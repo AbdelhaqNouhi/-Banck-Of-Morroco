@@ -1,0 +1,32 @@
+version: "3"
+services:
+
+  mongo_db:
+    container_name: mongo_db
+    image: mongo:latest
+    volumes:
+      - mongo_db:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 27018:27017
+
+  app:
+    container_name: my_app
+    build: .
+    working_dir: /Backend
+    volumes:
+      - ./:/Backend
+    ports:
+      - 4000:3000
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017
+      DB_NAME: Banck-Of-Morroco
+
+    depends_on:
+      - mongo_db
+
+volumes:
+  mongo_db:
