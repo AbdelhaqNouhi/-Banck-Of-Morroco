@@ -12,7 +12,7 @@ services:
     ports:
       - 27018:27017
 
-  app:
+  server:
     container_name: Server
     build: .
     working_dir: /Backend
@@ -27,6 +27,16 @@ services:
 
     depends_on:
       - mongo_db
+
+  client:
+    container_name: client
+    build: .
+    working_dir: /Frontend
+    volumes:
+      - ./:/Frontend
+    ports:
+      - 8000:8000
+
 
 volumes:
   mongo_db:
