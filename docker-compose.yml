@@ -1,6 +1,31 @@
 version: "3"
 services:
 
+  frontend:
+    build:
+      context: frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/frontend
+    stdin_open: true
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./:/backend
+    ports:
+      - 4000:3000
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017
+      DB_NAME: Banck-Of-Morroco
+
+    depends_on:
+      - mongo_db
+
   mongo_db:
     container_name: mongo_db
     image: mongo:latest
@@ -11,22 +36,6 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: admin
     ports:
       - 27018:27017
-
-  server:
-    container_name: Server
-    build: .
-    working_dir: /Backend
-    volumes:
-      - ./:/Backend
-    ports:
-      - 4000:3000
-    environment:
-      PORT: 3000
-      MONGODB_URI: mongodb://mongo_db:27017
-      DB_NAME: Banck-Of-Morroco
-
-    depends_on:
-      - mongo_db
 
 volumes:
   mongo_db:
