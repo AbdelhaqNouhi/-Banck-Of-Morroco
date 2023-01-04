@@ -1,6 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const { model } = require('mongoose');
-const AccountModule = require('../../Models/Account.Model');
+const AccountModule = require('../Models/AccountModel');
 
 const GetAcountById = asyncHandler(async (req, res) => {
     
