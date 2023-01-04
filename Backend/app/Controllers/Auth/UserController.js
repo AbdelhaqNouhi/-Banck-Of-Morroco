@@ -1,13 +1,13 @@
 const JWt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
-const UsersModule = require('../../Models/UsersModel');
+const UserModule = require('../../Models/UserModel');
 
 
 const GetAllUser = asyncHandler(async (req, res) => {
 
     try {
-        const users = await UsersModule.find();
+        const users = await UserModule.find();
         res.status(201).json(users)
 
     } catch (err) {

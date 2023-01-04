@@ -18,6 +18,11 @@ const Transactions = mongoose.model (
             type: Date,
             required: [true, 'Please add a transaction date'],
         },
+
+        Maker: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        },
     })
 );
 

@@ -19,6 +19,11 @@ const Account = mongoose.model (
             type: Number,
             required: [true, 'Please add a balance'],
         },
+
+        Maker: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        },
     })
 );
 

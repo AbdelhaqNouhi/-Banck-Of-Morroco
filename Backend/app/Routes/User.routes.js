@@ -5,7 +5,7 @@ const {
     GetAllUser,
     RegisterUser,
     LoginUser
-} = require('../Controllers/Auth/UsersController');
+} = require('../Controllers/Auth/UserController');
 
 module.exports = function (app, url) {
     app.use(url, router);
