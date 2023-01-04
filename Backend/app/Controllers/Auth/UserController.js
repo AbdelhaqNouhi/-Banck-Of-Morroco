@@ -18,7 +18,7 @@ const GetAllUser = asyncHandler(async (req, res) => {
 
 const handleErrors = (err) => {
     console.log(err.message, err.code)
-    let errors = { full_name: '', email: '', phone: '', password: '' }
+    let errors = { full_name: '', phone: '', cin: '', email: '', password: '' }
 
     if (err.message.includes("Users validation failed")) {
         Object.values(err.errors).forEach(({ properties }) => {
@@ -30,7 +30,12 @@ const handleErrors = (err) => {
 
 const RegisterUser = asyncHandler(async (req, res) => {
 
-    const { full_name, email, phone, password } = req.body
+    const { full_name, phone, cin, email, password } = req.body
+
+    // check is email
+    if (!email.includes('@')) {
+        res.status(401).json({ status: "invalid email" })
+    }
 
     // check length of password
     if (password.length < 8) {
@@ -38,13 +43,13 @@ const RegisterUser = asyncHandler(async (req, res) => {
     }
 
     //  check if all fields exists
-    if (!full_name || !email || !phone || !password) {
+    if (!full_name || !phone || !cin || !email || !password) {
         res.status(401)
         throw new Error("please add all fields")
     }
 
     // check if user exists
-    const UserExists = await UsersModule.findOne({ email })
+    const UserExists = await UserModule.findOne({ email })
 
     if (UserExists) {
         res.status(401).json({ status: "user already exists" })
@@ -56,7 +61,7 @@ const RegisterUser = asyncHandler(async (req, res) => {
 
     // create User
     try {
-        const user = await UsersModule.create({ full_name, email, phone, password:HashPassword })
+        const user = await UserModule.create({ full_name, phone, cin, email,  password:HashPassword })
         res.status(201).json(user)
     }
     catch(err) {
@@ -85,7 +90,7 @@ const LoginUser = asyncHandler(async (req, res) => {
     }
 
     // check if user exists
-    const user = await UsersModule.findOne({ email })
+    const user = await UserModule.findOne({ email })
 
     if (!user) {
         res.status(401).json({ status: "user does not exists" })
