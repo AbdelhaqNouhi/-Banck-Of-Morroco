@@ -17,10 +17,11 @@ const GetAllUser = asyncHandler(async (req, res) => {
 })
 
 const handleErrors = (err) => {
+    console.log('rrrrrrrrrrrrrrrrrrrr')
     console.log(err.message, err.code)
     let errors = { full_name: '', phone: '', cin: '', email: '', password: '' }
 
-    if (err.message.includes("Users validation failed")) {
+    if (err.message.includes("User validation failed")) {
         Object.values(err.errors).forEach(({ properties }) => {
             errors[properties.path] = properties.message
         })
@@ -47,11 +48,18 @@ const RegisterUser = asyncHandler(async (req, res) => {
         res.status(401)
         throw new Error("please add all fields")
     }
-
-    // check if user exists
+    
+    // check if user exists by email
     const UserExists = await UserModule.findOne({ email })
-
+    
     if (UserExists) {
+        res.status(401).json({ status: "user already exists" })
+    }
+    
+    // check if user exists by cin
+    const UserExistsByCin = await UserModule.findOne({ cin })
+
+    if (UserExistsByCin) {
         res.status(401).json({ status: "user already exists" })
     }
 
