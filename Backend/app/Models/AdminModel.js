@@ -2,24 +2,13 @@
 const mongoose = require('mongoose')
 const { isEmail } = require('validator')
 
-const Users = mongoose.model(
-    "Users",
+const Admin = mongoose.model(
+    "Admin",
     new mongoose.Schema({
 
         full_name: {
             type: String,
             required: [true, 'Please add a first name'],
-        },
-
-        phone: {
-            type: String,
-            required: [true, 'Please add a phone number']
-        },
-
-        cin: {
-            type: String,
-            required: [true, 'Please add a CIN'],
-            unique: true
         },
 
         email: {
@@ -39,4 +28,4 @@ const Users = mongoose.model(
     })
 );
 
-module.exports = Users;
+module.exports = Admin;

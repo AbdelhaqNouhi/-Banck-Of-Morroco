@@ -87,27 +87,35 @@ const LoginUser = asyncHandler(async (req, res) => {
     // check if user exists
     const user = await UsersModule.findOne({ email })
 
-    if (user && (await bcrypt.compare(password, user.password))) {
-        res.status(201).json({
-            _id: user._id,
+    if (!user) {
+        res.status(401).json({ status: "user does not exists" })
+    }
+
+    // check if password is correct
+    const isMatch = await bcrypt.compare(password, user.password)
+
+    if (!isMatch) {
+        res.status(401).json({ status: "invalid password" })
+    }
+
+    // create token
+    const token = JWt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: 3600
+    })
+
+    res.status(201).json({
+        token,
+        user: {
+            id: user._id,
             full_name: user.full_name,
             email: user.email,
-            token: generateToken(user._id)
-        })
-    } else {
-        res.status(401).json({ status: "invalid email or password" })
-    }
-})
-
-const generateToken = (id) => {
-    return JWt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: 86400, // 24 hours
+            phone: user.phone
+        }
     })
-}
+})
 
 module.exports = {
     GetAllUser,
     RegisterUser,
     LoginUser,
-    generateToken
 }
