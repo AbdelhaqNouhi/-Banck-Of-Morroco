@@ -42,7 +42,7 @@ const DeleteAccount = asyncHandler(async (req, res) => {
         res.status(201).json({ id: req.params.id, message: "Account deleted"})
 })
 
-model.exports = {
+module.exports = {
     GetAccountById,
     UpdateAccount,
     DeleteAccount

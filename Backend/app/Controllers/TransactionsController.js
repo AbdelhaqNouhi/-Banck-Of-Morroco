@@ -11,3 +11,7 @@ const GetAllTransactions = asyncHandler(async (req, res) => {
         res.status(401).json({ status: "fail" , message: err.message})
     }
 })
+
+module.exports = {
+    GetAllTransactions
+}
