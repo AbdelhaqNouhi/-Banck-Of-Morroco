@@ -13,6 +13,35 @@ const GetAccountById = asyncHandler(async (req, res) => {
         }
 })
 
+const handleErrors = (err) => {
+    let errors = { Account_number: '', Account_type: '', Balance: '', Maker: ''}
+
+    if (err.message.includes("Account validation failed")) {
+        Object.values(err.errors).forEach(({ properties }) => {
+            errors[properties.path] = properties.message
+        })
+    }
+    return errors;
+}
+
+const CreateAccount = asyncHandler(async (req, res) => {
+    const { Account_number , Account_type , Balance , Maker } = req.body;
+
+    // check if all fields exists
+    if (!Account_number || !Account_type || !Balance || !Maker) {
+        res.status(401).json({ status: "fail" , message: "please add all fields" })
+    }
+
+    try {
+        const account = await AccountModule.create(req.body);
+        res.status(201).json(account)
+    } catch (err) {
+        const errors = handleErrors(err)
+        res.status(401).json({ errors})
+    }
+})
+
+
 const UpdateAccount = asyncHandler(async (req, res) => {
 
     const account = await AccountModule.findById(req.params.id);

@@ -17,8 +17,6 @@ const GetAllUser = asyncHandler(async (req, res) => {
 })
 
 const handleErrors = (err) => {
-    console.log('rrrrrrrrrrrrrrrrrrrr')
-    console.log(err.message, err.code)
     let errors = { full_name: '', phone: '', cin: '', email: '', password: '' }
 
     if (err.message.includes("User validation failed")) {
