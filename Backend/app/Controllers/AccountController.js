@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const AccountModule = require('../Models/AccountModel');
 
-const GetAcountById = asyncHandler(async (req, res) => {
+const GetAccountById = asyncHandler(async (req, res) => {
     
         try {
             const account = await AccountModule.findById(req.params.id);
@@ -43,7 +43,7 @@ const DeleteAccount = asyncHandler(async (req, res) => {
 })
 
 model.exports = {
-    GetAcountById,
+    GetAccountById,
     UpdateAccount,
     DeleteAccount
 }
