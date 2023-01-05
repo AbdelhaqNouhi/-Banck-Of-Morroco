@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {
     GetAllAccount,
-    GetAccountById,
+    GetAccountByUserId,
     CreateAccount,
     UpdateAccount,
     DeleteAccount
@@ -13,7 +13,7 @@ module.exports = function (app, url) {
     app.use(url, router);
 
     router.get('/GetAllAccount', GetAllAccount);
-    router.get('/GetAccountById/:id', GetAccountById);
+    router.get('/GetAccountByUserId/:id', GetAccountByUserId);
     router.post('/CreateAccount', CreateAccount);
     router.put('/UpdateAccount/:id', UpdateAccount);
     router.delete('/DeleteAccount/:id', DeleteAccount);

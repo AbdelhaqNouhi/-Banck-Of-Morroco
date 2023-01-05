@@ -24,23 +24,31 @@ const GetAllAccount = asyncHandler(async (req, res) => {
     }
 })
 
-const GetAccountById = asyncHandler(async (req, res) => {
-    
-        try {
-            const account = await AccountModule.findById(req.params.id).populate('Maker');
-            res.status(201).json(account)
-    
-        } catch (err) {
-            console.error('Error: ' + err.message)
-            res.status(401).json({ status: "fail" , message: err.message})
-        }
+
+const GetAccountByUserId = asyncHandler(async (req, res) => {
+
+    try {
+        const account = await AccountModule.find({ Maker: req.params.id }).populate('Maker');
+        res.status(201).json(account)
+    } catch (err) {
+        const errors = handleErrors(err)
+        res.status(401).json({ errors})
+    }
 })
 
+
 const CreateAccount = asyncHandler(async (req, res) => {
-    const { Account_number , Account_type , Balance , Maker } = req.body;
+
+    const { Account_type , Balance , Maker } = req.body;
+
+    // check if account not exists by maker
+    const account = await AccountModule.findOne({ Maker: req.body.Maker });
+    if (account) {
+        res.status(401).json({ status: "fail" , message: "Account already exists" })
+    }
 
     // check if all fields exists
-    if (!Account_number || !Account_type || !Balance || !Maker) {
+    if (!Account_type || !Balance || !Maker) {
         res.status(401).json({ status: "fail" , message: "please add all fields" })
     }
 
@@ -83,7 +91,7 @@ const DeleteAccount = asyncHandler(async (req, res) => {
 
 module.exports = {
     GetAllAccount,
-    GetAccountById,
+    GetAccountByUserId,
     CreateAccount,
     UpdateAccount,
     DeleteAccount

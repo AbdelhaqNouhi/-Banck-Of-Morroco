@@ -6,9 +6,7 @@ const Account = mongoose.model (
 
         Account_number: {
             type: Number,
-            required: [true, 'Please add a account number'],
-            minlength: [12, 'Minimum password length is 12 characters'],
-            unique: true
+            default: generateDefaultNumber(),
         },
 
         Account_type: {
@@ -27,5 +25,9 @@ const Account = mongoose.model (
         },
     })
 );
+
+function generateDefaultNumber(length = 16) {
+    return Math.random().toString().substring(2, length + 2);
+}
 
 module.exports = Account;
