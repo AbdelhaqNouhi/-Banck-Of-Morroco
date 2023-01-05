@@ -4,22 +4,39 @@ const Transactions = mongoose.model (
     "Transactions",
     new mongoose.Schema({
         
-        details: {
+        from: {
             type: String,
-            required: [true, 'Please add a transaction details'],
+            required: true,
+            required: [true, 'Please add a transaction from'],
+        },
+
+        to: {
+            type: String,
+            required: true,
+            required: [true, 'Please add a transaction to'],  
+        },
+
+        amount: {
+            type: Number,
+            required: true,
+            required: [true, 'Please add a transaction amount'],
         },
 
         type: {
-            type: Boolean,
+            type: String,
+            required: true,
+            enum: ['deposit', 'withdraw', 'transfer'],
             required: [true, 'Please add a transaction type'],
         },
 
         date : {
-            type: Date,
+            type: String,
+            required: true,
             required: [true, 'Please add a transaction date'],
         },
 
         Maker: {
+            required: true,
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         },

@@ -13,7 +13,7 @@ const Account = mongoose.model (
 
         Account_type: {
             type: String,
-            required: [true, 'Please add a account type'],
+            enum: ['student', 'normal'],
         },
 
         Balance: {
