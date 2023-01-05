@@ -4,7 +4,7 @@ const router = express.Router();
 const {
     SetTransactions,
     GetAllTransactions,
-    GetTransactionsById,
+    GetTransactionsByUserId,
     DeleteTransactions
 } = require('../Controllers/TransactionsController');
 
@@ -13,6 +13,6 @@ module.exports = function (app, url) {
 
     router.post('/SetTransactions', SetTransactions);
     router.get('/GetAllTransactions', GetAllTransactions);
-    router.get('/GetTransactionsById/:id', GetTransactionsById);
+    router.get('/GetTransactionsByUserId/:id', GetTransactionsByUserId);
     router.delete('/DeleteTransactions/:id', DeleteTransactions);
 }

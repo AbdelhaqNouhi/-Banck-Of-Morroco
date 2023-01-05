@@ -24,13 +24,13 @@ const GetAllTransactions = asyncHandler(async (req, res) => {
     }
 })
 
-const GetTransactionsById = asyncHandler(async (req, res) => {
+const GetTransactionsByUserId = asyncHandler(async (req, res) => {
     try {
-        const transactions = await TransactionsModel.findById(req.params.id).populate('Maker');
+        const transactions = await TransactionsModel.find({ Maker: req.params.id }).populate('Maker');
         res.status(201).json(transactions)
-
+        
     } catch (err) {
-        console.error('Error: ' + err.message)   
+        console.error('Error: ' + err.message)
         res.status(401).json({ status: "fail" , message: err.message})
     }
 })
@@ -68,6 +68,6 @@ const DeleteTransactions = asyncHandler(async (req, res) => {
 module.exports = {
     SetTransactions,
     GetAllTransactions,
-    GetTransactionsById,
+    GetTransactionsByUserId,
     DeleteTransactions
 }
