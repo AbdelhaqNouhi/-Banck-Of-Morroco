@@ -15,7 +15,7 @@ const handleErrors = (err) => {
 
 const GetAllTransactions = asyncHandler(async (req, res) => {
     try {
-        const transactions = await TransactionsModel.find();
+        const transactions = await TransactionsModel.find().populate('Maker');
         res.status(201).json(transactions)
 
     } catch (err) {
