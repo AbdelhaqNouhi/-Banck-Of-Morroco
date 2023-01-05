@@ -13,6 +13,17 @@ const handleErrors = (err) => {
     return errors;
 }
 
+const GetAllAccount = asyncHandler(async (req, res) => {
+
+    try {
+        const account = await AccountModule.find();
+        res.status(201).json(account)   
+    } catch (err) {
+        const errors = handleErrors(err)
+        res.status(401).json({ errors})
+    }
+})
+
 const GetAccountById = asyncHandler(async (req, res) => {
     
         try {
@@ -73,6 +84,7 @@ const DeleteAccount = asyncHandler(async (req, res) => {
 })
 
 module.exports = {
+    GetAllAccount,
     GetAccountById,
     CreateAccount,
     UpdateAccount,
