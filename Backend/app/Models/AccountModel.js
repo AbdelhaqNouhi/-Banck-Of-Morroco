@@ -7,6 +7,7 @@ const Account = mongoose.model (
         Account_number: {
             type: Number,
             required: [true, 'Please add a account number'],
+            minlength: [12, 'Minimum password length is 12 characters'],
             unique: true
         },
 
