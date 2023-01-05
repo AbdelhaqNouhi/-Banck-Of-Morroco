@@ -72,15 +72,13 @@ const UpdateAccount = asyncHandler(async (req, res) => {
 
 const DeleteAccount = asyncHandler(async (req, res) => {
     
-        const account = await AccountModule.findById(req.params.id);
-    
-        if (!account) {
-            res.status(401).json({ status: "fail" , message: "Account not found" })
-        }
-    
-        await account.remove()
-    
-        res.status(201).json({ id: req.params.id, message: "Account deleted"})
+    try {
+        const account = await AccountModule.findByIdAndDelete(req.params.id);
+        res.status(201).json({ id: req.params.id, message: "Deleted account" })
+    } catch (err) {
+        console.error('Error: ' + err.message)
+        res.status(401).json({ status: "fail" , message: err.message})
+    }
 })
 
 module.exports = {

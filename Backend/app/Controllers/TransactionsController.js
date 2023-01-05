@@ -53,8 +53,21 @@ const SetTransactions = asyncHandler(async (req, res) => {
     }
 })
 
+const DeleteTransactions = asyncHandler(async (req, res) => {
+    try {
+        const transactions = await TransactionsModel.findByIdAndDelete(req.params.id);
+        res.status(201).json({ id: req.params.id, message: "Deleted transactions" })
+        
+    } catch (err) {
+        console.error('Error: ' + err.message)
+        res.status(401).json({ status: "fail" , message: err.message})
+    }
+})
+
+
 module.exports = {
     SetTransactions,
     GetAllTransactions,
     GetTransactionsById,
+    DeleteTransactions
 }
