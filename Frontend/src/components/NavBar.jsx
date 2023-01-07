@@ -58,37 +58,31 @@ function NavBar() {
                     <ul className="flex flex-col justify-center items-center text-white-200 p-2 mt-4 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
                             <Link
+                                className={({ isActive }) => (isActive ? 'text-center bg-sky-600 text-white py-1.5 px-2 rounded' : 'text-center hover:bg-sky-600  text-black hover:text-white py-1.5 px-2 rounded')}
                                 to={"/"}
-                                className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white"
+                                // className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white"
                                 aria-current="page"
                             >
                                 Home
                             </Link>
                         </li>
                         <li>
-                            <a
-                                href="#"
-                                className="block py-2 pl-3 pr-4 text-white-200 rounded  md:hover:bg-transparent md:border-0 hover:text-primary md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                            <Link
+                                to={"/about"}
+                                className="block py-2 pl-3 pr-4  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                             >
-                                About
-                            </a>
+                                About Us
+                            </Link>
                         </li>
                         <li>
                             <Link
-                                to={"/contact-us"}
+                                to={"/contact"}
                                 className="block py-2 pl-3 pr-4  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                             >
                                 Contact
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                to={"/costimizer"}
-                                className="block py-2 pl-3 pr-4  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                            >
-                                Costimzer
-                            </Link>
-                        </li>
+
                         {isLogged ? (
                             <li onClick={() => sign_out()}>
                                 <div className="block py-3 px-4 border-none bg-primary  rounded-2xl  md:border-0  md:py-3 md:px-4  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
