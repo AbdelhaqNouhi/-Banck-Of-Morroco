@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";    
+import { Link, NavLink } from "react-router-dom";    
 
 function NavBar() {
     const [navbar, setNavbar] = useState(false);
@@ -21,7 +21,7 @@ function NavBar() {
             <div className="container flex flex-wrap items-center justify-between mx-auto">
                 <a href="https://flowbite.com/" className="flex items-center">
                     <span className="self-center text-xl text-[#BD3944]  font-semibold whitespace-nowrap dark:text-white">
-                        NAMX
+                        Bank Of Morroco
                     </span>
                 </a>
                 <button
@@ -57,30 +57,25 @@ function NavBar() {
                 >
                     <ul className="flex flex-col justify-center items-center text-white-200 p-2 mt-4 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
-                            <Link
-                                className={({ isActive }) => (isActive ? 'text-center bg-sky-600 text-white py-1.5 px-2 rounded' : 'text-center hover:bg-sky-600  text-black hover:text-white py-1.5 px-2 rounded')}
-                                to={"/"}
-                                // className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white"
-                                aria-current="page"
-                            >
-                                Home
-                            </Link>
+                            <NavLink 
+                                to={"/"} 
+                                className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
+                                Home 
+                            </NavLink>
                         </li>
                         <li>
-                            <Link
-                                to={"/about"}
-                                className="block py-2 pl-3 pr-4  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                            >
+                            <NavLink 
+                                to={"/about"} 
+                                className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
                                 About Us
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link
+                            <NavLink
                                 to={"/contact"}
-                                className="block py-2 pl-3 pr-4  rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                            >
+                                className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
                                 Contact
-                            </Link>
+                            </NavLink>
                         </li>
 
                         {isLogged ? (
