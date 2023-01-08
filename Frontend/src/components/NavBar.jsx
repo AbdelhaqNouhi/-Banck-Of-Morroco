@@ -17,7 +17,7 @@ function NavBar() {
         setNavbar(!navbar);
     };
     return (
-        <nav className="bg-white text-[#ffff] bg-quaternary sticky top-0 z-[100] border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-gray-900">
+        <nav className="bg-white text-[#ffff] bg-quaternary sticky top-0 z-[100] border-gray-200 px-2 sm:px-16 py-2.5  dark:bg-gray-900">
             <div className="container flex flex-wrap items-center justify-between mx-auto">
                 <a href="https://flowbite.com/" className="flex items-center">
                     <span className="self-center text-xl text-[#BD3944]  font-semibold whitespace-nowrap dark:text-white">
@@ -91,21 +91,21 @@ function NavBar() {
                         <li>
                             <NavLink 
                                 to={"/"} 
-                                className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
+                                className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
                                 Home 
                             </NavLink>
                         </li>
                         <li>
                             <NavLink 
                                 to={"/about"} 
-                                className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
+                                className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
                                 About Us
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
                                 to={"/contact"}
-                                className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
+                                className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
                                 Contact
                             </NavLink>
                         </li>
