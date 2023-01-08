@@ -1,10 +1,5 @@
-@font-face {
-  font-family: "Valorant";
-  src: url("Valorant.otf");
-}
-
 :root {
-  --v-red: #ff4655;
+  --v-red: #E7004C;
   --v-white: #ece8e1;
   --v-black: #0f1923;
   --v-outline: rgba(236, 232, 225, 0.5);
@@ -16,75 +11,12 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  font-family: "Valorant";
-}
-
 #container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.box {
-  width: 50%;
-}
-
-.logo {
-  fill: var(--v-white);
-}
-
-.betaText {
-  font-size: 2rem;
-  line-height: 2.5rem;
-  font-weight: 400px;
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 40px;
-}
-
-button {
-  font-family: "DIN Next LT Pro Bold";
-  font-weight: 400;
-  width: 100%;
-  margin-bottom: 3rem;
-  position: relative;
-  display: block;
-  font-size: 1.9rem;
-  padding: 0.7rem;
-  border: 0;
-  text-transform: uppercase;
-  background-color: transparent;
-  cursor: pointer;
-  color: var(--v-white);
+  width:24rem;
 }
 
 button:hover {
   color: var(--v-white);
-}
-
-button::before,
-button::after {
-  background-color: transparent;
-  content: "";
-  display: block;
-  position: absolute;
-  height: calc(50% - 0.4rem);
-  width: 100%;
-  border: 1px solid var(--v-outline);
-  left: 0;
-}
-
-button::before {
-  border-bottom: 0;
-  top: 0;
-}
-
-button::after {
-  border-top: 0;
-  bottom: 0;
 }
 
 /* LABEL  */
@@ -126,9 +58,11 @@ button:hover .hover-effect {
 
 /* Label Text */
 .label-text {
+  font-size: 1.2rem;
+  font-weight: bold;
   position: relative;
   display: block;
-  padding: 1rem;
+  padding: 0.8rem;
   background-color: transparent;
   z-index: 1;
 }
