@@ -1,19 +1,8 @@
 import React from "react";
 import Background from "../assets/images/slider.jpg";
 import Typewriter from "typewriter-effect";
-import PrimaryButton from "../layouts/Button/PrimaryButton";
-import { useState } from "react";
-import { useEffect } from 'react'
 
 const Home = () => {
-    const [title, setTitle] = useState("OPEN MY ACCOUNT");
-    const [message, setMessage] = useEffect();
-
-    useEffect(() => {
-        setTimeout(() => {
-            setMessage("OPEN MY ACCOUNT");
-        }, 5000);
-    }, []);
 
     return (
         <div>
@@ -30,10 +19,6 @@ const Home = () => {
                         }}
                     />
                 </div>
-                {
-                    setMessage ? <div><PrimaryButton width={"w-60"} title={message} /></div> : ''
-                }
-                
             </div>
             <div className="">
                 <img src={Background} alt="img" />
