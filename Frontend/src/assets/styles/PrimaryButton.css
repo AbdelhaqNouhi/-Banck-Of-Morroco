@@ -1,8 +1,11 @@
 :root {
+  /* bg-gray-700 */
+  --v-dark: #212121;
+  --v-blue: #4c8dff;
   --v-red: #E7004C;
   --v-white: #ece8e1;
   --v-black: #0f1923;
-  --v-outline: rgba(236, 232, 225, 0.5);
+  /* --v-outline: rgba(236, 232, 225, 0.5); */
 }
 
 *,
@@ -46,7 +49,7 @@ button:hover {
   top: 0;
   left: -5%;
   z-index: 1;
-  background-color: var(--v-red);
+  background-color: var(--v-blue);
   transform: translateX(-100%) skew(-10deg);
   transition: -webkit-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
@@ -75,7 +78,7 @@ button:hover .hover-effect {
   width: 0.6rem;
   right: 0;
   bottom: 0;
-  background-color: var(--v-black);
+  background-color: var(--v-dark);
   transition: background-color 0.2s ease-in;
 }
 button:hover .label-text:after {
@@ -84,7 +87,7 @@ button:hover .label-text:after {
 
 /* PRIMARY BUTTON */
 .primary {
-  color: var(--v-black);
+  color: var(--v-dark);
 }
 
 .primary .label::before {

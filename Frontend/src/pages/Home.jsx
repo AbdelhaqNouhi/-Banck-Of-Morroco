@@ -1,7 +1,9 @@
 import React from "react";
-import Background from "../assets/images/slider.jpg";
+import Background from "../assets/images/img/slider.jpg";
 import Typewriter from "typewriter-effect";
 import PrimaryButton from "../layouts/Button/PrimaryButton";
+import HowWork from "../components/Home/HowWork";
+
 import { useState } from "react";
 
 const Home = () => {
@@ -10,8 +12,8 @@ const Home = () => {
 
     return (
         <div>
-            <div className="absolute flex flex-col gap-12 justify-center my-28 mx-16 te text-4xl font-bold text-blue-500">
-                {/* <div> */}
+            <div>
+                <div className="absolute flex flex-col gap-12 justify-center my-28 mx-16 te text-4xl font-bold dark:text-gray-900">
                     <Typewriter
                         onInit={(typewriter) => {
                             typewriter
@@ -22,15 +24,22 @@ const Home = () => {
                                 .start();
                         }}
                     />
-                    <div className="relative flex flex-col gap-12">
-                        <h1>Becoming a CRÉDIT DU MAROC, <br/> customer in all simplicity.</h1>
+                    <div>
+                        <div className="flex gap-4">
+                            <h1>Becoming a</h1>
+                            <h1 className="text-blue-500">CRÉDIT DU MAROC,</h1>
+                        </div>
+                        <h1>Customer in all simplicity.</h1>
+                    </div>
+                    <div className=''>
                         <PrimaryButton title={ title } />
                     </div>
-                {/* </div> */}
+                </div>
+                <div className="">
+                    <img src={Background} alt="img" />
+                </div>
             </div>
-            <div className="">
-                <img src={Background} alt="img" />
-            </div>
+            <HowWork />
         </div>
     );
 };
