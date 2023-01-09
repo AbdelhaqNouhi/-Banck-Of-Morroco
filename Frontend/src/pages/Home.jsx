@@ -3,6 +3,8 @@ import Background from "../assets/images/img/slider.jpg";
 import Typewriter from "typewriter-effect";
 import PrimaryButton from "../layouts/Button/PrimaryButton";
 import HowWork from "../components/Home/HowWork";
+import Students from '../components/Home/Students'
+import Salaries from "../components/Home/Salaries";
 
 import { useState } from "react";
 
@@ -38,8 +40,10 @@ const Home = () => {
                 <div className="">
                     <img src={Background} alt="img" />
                 </div>
-            </div>
             <HowWork />
+            </div>
+            <Students />
+            <Salaries />
         </div>
     );
 };
