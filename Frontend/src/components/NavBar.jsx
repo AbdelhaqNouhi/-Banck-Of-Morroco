@@ -118,9 +118,11 @@ function NavBar() {
                             </li>
                         ) : (
                             <li onClick={() => Auth_modal()}>
-                                <div className="block py-3 px-4 bg-primary cursor-pointer rounded-2xl  md:border-0  md:py-3 md:px-4 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                                <NavLink
+                                    to={"/signIn"}
+                                    className= "block py-3 px-4 bg-blue-500 cursor-pointer rounded-2xl  md:border-0  md:py-3 md:px-4 dark:text-white md:dark:hover:text-gray-400 dark:hover:hover:text-gray-400">
                                     sign in
-                                </div>
+                                </NavLink>
                             </li>
                         )}
                     </ul>
