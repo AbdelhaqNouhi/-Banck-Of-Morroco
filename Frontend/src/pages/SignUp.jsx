@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, NavLink } from "react-router-dom"; 
 import { useLottie } from "lottie-react";
-import lottie from '../assets/lottie/login.json';
+import lottie from '../assets/lottie/registered.json';
 import { useState } from "react";
 
 const SignUp = () => {
@@ -14,15 +14,15 @@ const SignUp = () => {
 
     return (
         <div>
-            <div className="min-h-screen flex justify-center items-center">
-                <div className="px-16 bg-gray-100 flex rounded-2xl shadow-lg max-w-3/1 items-center p-6">
-                    <div className="md:w-1/2 w-screen pr-16">
+            <div className=" flex justify-center items-center m-5">
+                <div className="md:w-3/4 w-screen md:px-16 bg-gray-100 flex rounded-2xl shadow-lg max-w-3/1 items-center p-4">
+                    <div className="md:w-1/2 w-screen px-16">
                         <h2 className="font-bold text-2xl text-blue-500">Sign Up!</h2>
                         <p className="text-sm mt-4">
                             if you already a member, easily log in
                         </p>
-                        <form action="" className="flex flex-col gap-2">
-                            <div className='flex gap-4 '>
+                        <form action="" className="flex flex-col">
+                            <div className='flex flex-col'>
                                 <input 
                                     type="text"
                                     name="fullname"
@@ -35,8 +35,6 @@ const SignUp = () => {
                                     placeholder="Phone Number"
                                     className="p-2 mt-8 rounded-xl border"
                                 />
-                            </div>
-                            <div className='flex gap-4'>
                                 <input
                                     type="email"
                                     name="email"
