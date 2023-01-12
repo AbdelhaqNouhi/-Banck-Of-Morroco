@@ -1,11 +1,10 @@
-import React from "react";
+import React from 'react'
 import { Link, NavLink } from "react-router-dom"; 
 import { useLottie } from "lottie-react";
 import lottie from '../assets/lottie/login.json';
 import { useState } from "react";
 
-
-const SignIn = () => {
+const SignUp = () => {
 
     const options = {
         animationData: lottie,
@@ -16,19 +15,41 @@ const SignIn = () => {
     return (
         <div>
             <div className="min-h-screen flex justify-center items-center">
-                <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3/1 items-center p-6">
-                    <div className="md:w-1/2 w-screen px-16">
-                        <h2 className="font-bold text-2xl text-blue-500">Login</h2>
+                <div className="px-16 bg-gray-100 flex rounded-2xl shadow-lg max-w-3/1 items-center p-6">
+                    <div className="md:w-1/2 w-screen pr-16">
+                        <h2 className="font-bold text-2xl text-blue-500">Sign Up!</h2>
                         <p className="text-sm mt-4">
                             if you already a member, easily log in
                         </p>
-                        <form action="" className="flex flex-col gap-6">
-                            <input
-                                className="p-2 mt-8 rounded-xl border"
-                                type="email"
-                                name="email"
-                                placeholder="E-mail"
-                            />
+                        <form action="" className="flex flex-col gap-2">
+                            <div className='flex gap-4 '>
+                                <input 
+                                    type="text"
+                                    name="fullname"
+                                    placeholder="Full Name"
+                                    className="p-2 mt-8 rounded-xl border"
+                                />
+                                <input 
+                                    type="text"
+                                    name="phone"
+                                    placeholder="Phone Number"
+                                    className="p-2 mt-8 rounded-xl border"
+                                />
+                            </div>
+                            <div className='flex gap-4'>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="E-mail"
+                                    className="p-2 mt-8 rounded-xl border"
+                                />
+                                <input
+                                    type="text"
+                                    name="cin"
+                                    placeholder="CIN"
+                                    className="p-2 mt-8 rounded-xl border"
+                                />
+                            </div>
                             <div className="relative">
                                 <input
                                     className="w-full p-2 mt-8 rounded-xl border"
@@ -62,15 +83,13 @@ const SignIn = () => {
                             </div>
 
                             <button className="hover:scale-105 duration-300 bg-blue-500 text-white rounded-md py-2 mt-4">
-                                Login
+                                Sign Up
                             </button>
                         </form>
-                        <p className="mt-5 text-xs border-b border-gray-400 py-4">
-                            Forgot your Password
-                        </p>
+                        <p className="mt-5 text-xs border-b border-gray-400 py-4"></p>
                         <div className="mt-3 text-xs flex justify-between items-center">
-                            <p>If you Don't have an account..</p>
-                            <Link to="/SignUp"><button className="hover:scale-105 duration-300 py-2 px-5 bg-white hover:text-black border rounded-xl"> Register </button></Link>
+                            <p >Go To..</p>
+                            <Link to="/SignIn"><button className="hover:scale-105 duration-300 py-2 px-5 bg-white hover:text-black border rounded-xl"> Login </button></Link>
                         </div>
                     </div>
                     <div className="md:block hidden w-1/2">
@@ -79,8 +98,7 @@ const SignIn = () => {
                 </div>
             </div>
         </div>
+    )
+}
 
-    );
-};
-
-export default SignIn;
+export default SignUp
