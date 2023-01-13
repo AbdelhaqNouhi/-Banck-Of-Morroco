@@ -14,38 +14,48 @@ const SignUp = () => {
 
     return (
         <div>
-            <div className=" flex justify-center items-center m-5">
-                <div className="md:w-3/4 w-screen md:px-16 bg-gray-100 flex rounded-2xl shadow-lg max-w-3/1 items-center p-4">
-                    <div className="md:w-1/2 w-screen px-16">
+            <div className=" flex justify-center items-center m-">
+                <div className="md:w-3/4 w-screen md:px-16 flex rounded-2xl shadow-lg max-w-3/1 items-center p-4">
+                    <div className="md:w-4/5 w-screen px-16">
                         <h2 className="font-bold text-2xl text-blue-500">Sign Up!</h2>
                         <p className="text-sm mt-4">
                             if you already a member, easily log in
                         </p>
-                        <form action="" className="flex flex-col">
-                            <div className='flex flex-col'>
+                        <form action="" className="flex flex-col gap-2">
+                            <div className='flex gap-8 mt-8'>
                                 <input 
                                     type="text"
                                     name="fullname"
                                     placeholder="Full Name"
-                                    className="p-2 mt-8 rounded-xl border"
+                                    className="p-2 rounded-xl border w-1/2"
                                 />
                                 <input 
                                     type="text"
                                     name="phone"
                                     placeholder="Phone Number"
-                                    className="p-2 mt-8 rounded-xl border"
+                                    className="p-2 rounded-xl border w-1/2"
                                 />
+                            </div>
+                            <div className='flex gap-8'>
                                 <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="E-mail"
-                                    className="p-2 mt-8 rounded-xl border"
+                                    type="date"
+                                    name="Birthdate"
+                                    placeholder="Birthdate"
+                                    className="p-2 mt-8 rounded-xl border w-1/2"
                                 />
                                 <input
                                     type="text"
                                     name="cin"
                                     placeholder="CIN"
-                                    className="p-2 mt-8 rounded-xl border"
+                                    className="p-2 mt-8 rounded-xl border w-1/2"
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="E-mail"
+                                    className="w-full p-2 mt-8 rounded-xl border"
                                 />
                             </div>
                             <div className="relative">
@@ -81,7 +91,7 @@ const SignUp = () => {
                             </div>
 
                             <button className="hover:scale-105 duration-300 bg-blue-500 text-white rounded-md py-2 mt-4">
-                                Sign Up
+                                Validate
                             </button>
                         </form>
                         <p className="mt-5 text-xs border-b border-gray-400 py-4"></p>
@@ -90,9 +100,9 @@ const SignUp = () => {
                             <Link to="/SignIn"><button className="hover:scale-105 duration-300 py-2 px-5 bg-white hover:text-black border rounded-xl"> Login </button></Link>
                         </div>
                     </div>
-                    <div className="md:block hidden w-1/2">
+                    {/* <div className="md:block hidden w-1/2">
                         {View}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

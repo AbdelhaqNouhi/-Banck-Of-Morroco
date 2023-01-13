@@ -6,6 +6,9 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
+import StudentPage from "./pages/StdentPage"
+import SalariesPage from "./pages/SalariesPage"
+
 import ErrorPage from './pages/ErrorPage'
 
 function App() {
@@ -21,6 +24,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="/studentPage" element={<StudentPage />} />
+          <Route path="/salariesPage" element={<SalariesPage />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>

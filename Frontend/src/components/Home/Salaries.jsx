@@ -1,6 +1,7 @@
 import React from 'react'
 import SalariesImg from '../../assets/images/img/Salaries.png'
 import PrimaryButton from "../../layouts/Button/PrimaryButton";
+import { Link, NavLink } from "react-router-dom";
 
 import { useState } from "react";
 
@@ -15,8 +16,8 @@ const Salaries = () => {
             <div className='flex flex-col gap-16 py-4'>
                 <h1 className='text-blue-500 text-4xl font-bold'>Are you an entrepreneur ?</h1>
                 <p className=''>Because your needs grow with your ambitions, Crédit du Maroc, <br/> offers you the Global Plus package to support you in your life projects. <br/> Open your account and enjoy a unique experience.</p>
-                <div className=''>
-                    <PrimaryButton title={ title } />
+                <div className=''> 
+                    <Link to="/salariesPage"><PrimaryButton title={ title } className="hover:scale-105 duration-300 py-2 px-5 bg-white hover:text-black border rounded-xl"> Register </PrimaryButton></Link>
                 </div>
             </div>
         </div>
