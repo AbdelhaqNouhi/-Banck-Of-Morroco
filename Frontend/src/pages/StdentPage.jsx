@@ -1,8 +1,11 @@
 import React from 'react'
+import AsyncSelect from "react-select/async";
 import StudentsImg from '../assets/images/img/Student.jpg'
 import SignUp from './SignUp'
 
 const StdentPage = () => {
+    
+
     return (
         <div className='flex flex-col'>
             <div className='flex justify-between'>

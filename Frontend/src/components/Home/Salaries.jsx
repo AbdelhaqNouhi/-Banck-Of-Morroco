@@ -1,5 +1,5 @@
 import React from 'react'
-import SalariesImg from '../../assets/images/img/Salaries.png'
+import SalariesImg from '../../assets/images/img/Salaries.jpg'
 import PrimaryButton from "../../layouts/Button/PrimaryButton";
 import { Link, NavLink } from "react-router-dom";
 
@@ -11,7 +11,7 @@ const Salaries = () => {
     return (
         <div className=' border-gray-200 text-white px-8 m-16 py-8 flex justify-between dark:text-gray-900'>
             <div className='w-2/5'>
-                <img src={ SalariesImg } alt="" />
+                <img className='rounded-xl' src={ SalariesImg } alt="" />
             </div>
             <div className='flex flex-col gap-16 py-4'>
                 <h1 className='text-blue-500 text-4xl font-bold'>Are you an entrepreneur ?</h1>

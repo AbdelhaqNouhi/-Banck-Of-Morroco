@@ -1,16 +1,30 @@
 import React from 'react'
+import { cities } from 'list-of-moroccan-cities'
+import Select from "react-select";
 import { Link, NavLink } from "react-router-dom"; 
 import { useLottie } from "lottie-react";
 import lottie from '../assets/lottie/registered.json';
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const SignUp = () => {
 
-    const options = {
-        animationData: lottie,
-        loop: true
-    };
-    const { View } = useLottie(options);
+    const options = [
+        { value: 'Agadir', label: 'Agadir' },
+        { value: 'Casablanca', label: 'Casablanca' },
+        { value: 'Fes', label: 'Fes' },
+        { value: 'Marrakech', label: 'Marrakech' },
+        { value: 'Rabat', label: 'Rabat' },
+        { value: 'Tanger', label: 'Tanger' },
+        { value: 'Tetouan', label: 'Tetouan' },
+        { value: 'Oujda', label: 'Oujda' },
+        { value: 'Kenitra', label: 'Kenitra' },
+        { value: 'Safi', label: 'Safi' },
+        { value: 'Meknes', label: 'Meknes' },
+        { value: 'El Jadida', label: 'El Jadida' },
+        { value: 'Nador', label: 'Nador' },
+        { value: 'Khouribga', label: 'Khouribga' },
+        { value: 'Taza', label: 'Taza' },
+    ];
 
     return (
         <div>
@@ -39,8 +53,8 @@ const SignUp = () => {
                             <div className='flex gap-8'>
                                 <input
                                     type="date"
-                                    name="Birthdate"
-                                    placeholder="Birthdate"
+                                    name="Birthday"
+                                    placeholder="Birthday"
                                     className="p-2 mt-8 rounded-xl border w-1/2"
                                 />
                                 <input
@@ -88,6 +102,17 @@ const SignUp = () => {
                                         stroke-linejoin="round"
                                     />
                                 </svg>
+                            </div>
+                            <div className='mt-8 flex flex-col gap-4'>
+                                <label htmlFor="">Agency Selection*</label>
+                                <Select 
+                                    className="w-full rounded-xl"
+                                    options={options}
+                                    defaultOptions={options}
+                                    isClearable={true}
+                                    isSearchable={true}
+                                    placeholder="Select Agency"
+                                />
                             </div>
 
                             <button className="hover:scale-105 duration-300 bg-blue-500 text-white rounded-md py-2 mt-4">

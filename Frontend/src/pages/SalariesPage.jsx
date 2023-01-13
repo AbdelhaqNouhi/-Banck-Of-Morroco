@@ -1,6 +1,6 @@
 import React from 'react'
 import SignUp from './SignUp'
-import SalariesImg from '../assets/images/img/Salaries.png'
+import SalariesImg from '../assets/images/img/Salaries.jpg'
 
 export const SalariesPage = () => {
     return (
