@@ -39,14 +39,14 @@ const SignUp = () => {
                             <div className='flex gap-8 mt-8'>
                                 <input 
                                     type="text"
-                                    name="fullname"
-                                    placeholder="Full Name"
+                                    name="first_name"
+                                    placeholder="First Name"
                                     className="p-2 rounded-xl border w-1/2"
                                 />
                                 <input 
                                     type="text"
-                                    name="phone"
-                                    placeholder="Phone Number"
+                                    name="last_name"
+                                    placeholder="Last Name"
                                     className="p-2 rounded-xl border w-1/2"
                                 />
                             </div>
@@ -72,7 +72,15 @@ const SignUp = () => {
                                     className="w-full p-2 mt-8 rounded-xl border"
                                 />
                             </div>
-                            <div className="relative">
+                            <div>
+                                <input
+                                    type="phone"
+                                    name="phone"
+                                    placeholder="Phone"
+                                    className="w-full p-2 mt-8 rounded-xl border"
+                                />
+                            </div>
+                            {/* <div className="relative">
                                 <input
                                     className="w-full p-2 mt-8 rounded-xl border"
                                     type="password"
@@ -102,7 +110,7 @@ const SignUp = () => {
                                         stroke-linejoin="round"
                                     />
                                 </svg>
-                            </div>
+                            </div> */}
                             <div className='mt-8 flex flex-col gap-4'>
                                 <label htmlFor="">Agency Selection*</label>
                                 <Select 
