@@ -3,15 +3,39 @@ import { Link, NavLink } from "react-router-dom";
 import { useLottie } from "lottie-react";
 import lottie from '../assets/lottie/login.json';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const SignIn = () => {
-
     const options = {
         animationData: lottie,
         loop: true
     };
     const { View } = useLottie(options);
+
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const loginUser = async (e) => {
+        e.preventDefault();
+        const User = { email, password };
+
+        await fetch("http://localhost:3000/Api/LoginUser", {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(User)
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            const token = data.token;
+            if(token){
+                localStorage.setItem("token", token);
+                navigate("/");
+            }
+        })
+        .catch((err) => console.log(err));
+    };
 
     return (
         <div>
@@ -22,12 +46,14 @@ const SignIn = () => {
                         <p className="text-sm mt-4">
                             if you already a member, easily log in
                         </p>
-                        <form action="" className="flex flex-col gap-6">
+                        <form onSubmit={ loginUser } className="flex flex-col gap-6">
                             <input
                                 className="p-2 mt-8 rounded-xl border"
                                 type="email"
                                 name="email"
                                 placeholder="E-mail"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <div className="relative">
                                 <input
@@ -35,6 +61,8 @@ const SignIn = () => {
                                     type="password"
                                     name="password"
                                     placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                                 <svg
                                     className="absolute top-1/2 right-3 translate-y-1/2"

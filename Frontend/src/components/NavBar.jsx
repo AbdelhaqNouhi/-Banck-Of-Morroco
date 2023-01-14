@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useEffect, useState } from 'react'
 import { Link, NavLink } from "react-router-dom"; 
 
 function NavBar() {
     const [navbar, setNavbar] = useState(false);
-    const [isLogged, setIsLogged] = useState(false);
     const [openAuthModal, setOpenAuthModal] = useState(false);
+    const [isLogged, setIsLogged] = useState(false);
 
     const sign_out = () => {
         setIsLogged(false);
@@ -16,6 +16,18 @@ function NavBar() {
     const active = () => {
         setNavbar(!navbar);
     };
+
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            setIsLogged(true);
+        }
+    }, []);
+
+    const logOut = () => {
+        localStorage.removeItem("token");
+        setIsLogged(false);
+    };
+    
     return (
         <nav className="bg-white text-[#ffff] bg-quaternary sticky top-0 z-[100] border-gray-200 px-2 sm:px-16 py-2.5  dark:bg-gray-900">
             <div className="container flex flex-wrap items-center justify-between mx-auto">
@@ -111,9 +123,9 @@ function NavBar() {
                         </li>
 
                         {isLogged ? (
-                            <li onClick={() => sign_out()}>
-                                <div className="block py-3 px-4 border-none bg-primary  rounded-2xl  md:border-0  md:py-3 md:px-4  dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                    sign out
+                            <li onClick={() => logOut()}>
+                                <div className= "block py-3 px-4 cursor-pointer hover:scale-105 duration-300 bg-blue-500 text-white rounded-md">
+                                    Log Out
                                 </div>
                             </li>
                         ) : (

@@ -7,10 +7,10 @@ const PrimaryButton = ({title}) => {
     <div id="container">
       <img src="../../assets/" alt="" />
       <div className="button">
-        <button className="primary" onClick={title}>
+        <button className="primary " onClick={title}>
           <div className="label">
             <span className="hover-effect"></span>
-            <span className="label-text">{title}</span>
+            <span className="label-text text-sm md:text-lg">{title}</span>
           </div>
         </button>
       </div>
