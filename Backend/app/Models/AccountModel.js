@@ -11,12 +11,13 @@ const Account = mongoose.model (
 
         Account_type: {
             type: String,
-            enum: ['student', 'normal'],
+            enum: ['student', 'entrepreneur'],
         },
 
         Balance: {
             type: Number,
             required: [true, 'Please add a balance'],
+            default: 0.00,
         },
 
         Maker: {
