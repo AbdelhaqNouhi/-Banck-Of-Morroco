@@ -3,7 +3,7 @@ const AccountModule = require('../Models/AccountModel');
 
 
 const handleErrors = (err) => {
-    let errors = { Account_number: '', Account_type: '', Balance: '', Maker: '' }
+    let errors = { Type: '', Agency: '', Maker: '' }
 
     if (err.message.includes("Account validation failed")) {
         Object.values(err.errors).forEach(({ properties }) => {
@@ -39,17 +39,17 @@ const GetAccountByUserId = asyncHandler(async (req, res) => {
 
 const CreateAccount = asyncHandler(async (req, res) => {
 
-    const { Account_type , Balance , Maker } = req.body;
+    const { Type , Agency, Maker } = req.body;
 
     // check if account not exists by maker
     const account = await AccountModule.findOne({ Maker: req.body.Maker });
     if (account) {
-        res.status(401).json({ status: "fail" , message: "Account already exists" })
+        res.status(401).json({ message: "Account already exists" })
     }
 
     // check if all fields exists
-    if (!Account_type || !Balance || !Maker) {
-        res.status(401).json({ status: "fail" , message: "please add all fields" })
+    if (!Type || !Agency || !Maker) {
+        res.status(401).json({ message: "please add all fields" })
     }
 
     try {
@@ -67,7 +67,7 @@ const UpdateAccount = asyncHandler(async (req, res) => {
     const account = await AccountModule.findById(req.params.id);
 
     if (!account) {
-        res.status(401).json({ status: "fail" , message: "Account not found" })
+        res.status(401).json({ message: "Account not found" })
     }
 
     const UpdateAccount = await AccountModule.findByIdAndUpdate(req.params.id, req.body, {

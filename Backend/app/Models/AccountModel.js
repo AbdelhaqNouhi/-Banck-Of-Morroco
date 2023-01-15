@@ -4,23 +4,22 @@ const Account = mongoose.model (
     "Account",
     new mongoose.Schema({
 
-        Account_number: {
+        Number: {
             type: Number,
             default: generateDefaultNumber(),
         },
 
-        Account_type: {
+        Type: {
             type: String,
-            enum: ['student', 'entrepreneur'],
+            enum: ['Student', 'Entrepreneur'],
         },
 
         Balance: {
             type: Number,
-            required: [true, 'Please add a balance'],
-            default: 0.00,
+            default: 0.000,
         },
 
-        agency: {
+        Agency: {
             type: String,
             required: [true, 'Please add an agency'],
         },
