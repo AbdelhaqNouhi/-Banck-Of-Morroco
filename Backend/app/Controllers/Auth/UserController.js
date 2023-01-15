@@ -17,7 +17,7 @@ const GetAllUser = asyncHandler(async (req, res) => {
 })
 
 const handleErrors = (err) => {
-    let errors = { full_name: '', phone: '', cin: '', email: '', password: '' }
+    let errors = { first_name: '', last_name: '', cin: '', phone: '', email: '', password: '' }
 
     if (err.message.includes("User validation failed")) {
         Object.values(err.errors).forEach(({ properties }) => {
@@ -29,7 +29,7 @@ const handleErrors = (err) => {
 
 const RegisterUser = asyncHandler(async (req, res) => {
 
-    const { full_name, phone, cin, email, password } = req.body
+    const { first_name, last_name, cin, phone, email, password } = req.body
 
     // check is email
     if (!email.includes('@')) {
@@ -42,7 +42,7 @@ const RegisterUser = asyncHandler(async (req, res) => {
     }
 
     //  check if all fields exists
-    if (!full_name || !phone || !cin || !email || !password) {
+    if (!first_name || !last_name || !cin || !phone || !email || !password) {
         res.status(401)
         throw new Error("please add all fields")
     }
@@ -67,7 +67,7 @@ const RegisterUser = asyncHandler(async (req, res) => {
 
     // create User
     try {
-        const user = await UserModule.create({ full_name, phone, cin, email,  password:HashPassword })
+        const user = await UserModule.create({ first_name, last_name, cin, phone, email, password: HashPassword })
         res.status(201).json(user)
     }
     catch(err) {
@@ -118,9 +118,11 @@ const LoginUser = asyncHandler(async (req, res) => {
         token,
         user: {
             id: user._id,
-            full_name: user.full_name,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            cin: user.cin,
+            phone: user.phone,
             email: user.email,
-            phone: user.phone
         }
     })
 })

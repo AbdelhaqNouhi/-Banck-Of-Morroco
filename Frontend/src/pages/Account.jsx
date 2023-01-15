@@ -1,57 +1,9 @@
 import React from 'react'
 import Select from "react-select";
-import { Link, NavLink } from "react-router-dom"; 
+import { Link, NavLink } from "react-router-dom";
 import { useState, useRef } from "react";
 
-const SignUp = () => {
-
-    // const options = [
-    //     { value: 'Agadir', label: 'Agadir' },
-    //     { value: 'Casablanca', label: 'Casablanca' },
-    //     { value: 'Fes', label: 'Fes' },
-    //     { value: 'Marrakech', label: 'Marrakech' },
-    //     { value: 'Rabat', label: 'Rabat' },
-    //     { value: 'Tanger', label: 'Tanger' },
-    //     { value: 'Tetouan', label: 'Tetouan' },
-    //     { value: 'Oujda', label: 'Oujda' },
-    //     { value: 'Kenitra', label: 'Kenitra' },
-    //     { value: 'Safi', label: 'Safi' },
-    //     { value: 'Meknes', label: 'Meknes' },
-    //     { value: 'El Jadida', label: 'El Jadida' },
-    //     { value: 'Nador', label: 'Nador' },
-    //     { value: 'Khouribga', label: 'Khouribga' },
-    //     { value: 'Taza', label: 'Taza' },
-    // ];
-
-    const [first_name, setFirstName] = useState("");
-    const [last_name, setLastName] = useState("");
-    const [cin, setCin] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    
-
-    const Register = async (e) => {
-        e.preventDefault();
-        const register =  { first_name, last_name, cin, phone, email, password };
-
-        await fetch("http://localhost:3000/Api/RegisterUser", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(register)
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            if (data) {
-                console.log(data);
-                // alert("You are registered successfully");
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }
-
+const Account = () => {
     return (
         <div>
             <div className=" flex justify-center items-center m-">
@@ -61,23 +13,19 @@ const SignUp = () => {
                         <p className="text-sm mt-4">
                             if you already a member, easily log in
                         </p>
-                        <form onSubmit={ Register } className="flex flex-col gap-2">
+                        <form className="flex flex-col gap-2">
                             <div className='flex gap-8 mt-8'>
-                                <input 
+                                <input
                                     type="text"
                                     name="first_name"
                                     placeholder="First Name"
                                     className="p-2 rounded-xl border w-1/2"
-                                    value={first_name}
-                                    onChange={(e) => setFirstName(e.target.value)}
                                 />
-                                <input 
+                                <input
                                     type="text"
                                     name="last_name"
                                     placeholder="Last Name"
                                     className="p-2 rounded-xl border w-1/2"
-                                    value={last_name}
-                                    onChange={(e) => setLastName(e.target.value)}
                                 />
                             </div>
                             <div className='flex gap-8'>
@@ -86,16 +34,12 @@ const SignUp = () => {
                                     name="cin"
                                     placeholder="CIN"
                                     className="p-2 mt-8 rounded-xl border w-1/2"
-                                    value={cin}
-                                    onChange={(e) => setCin(e.target.value)}
                                 />
                                 <input
                                     type="phone"
                                     name="phone"
                                     placeholder="Phone"
                                     className="p-2 mt-8 rounded-xl border w-1/2"
-                                    value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
                                 />
                             </div>
                             <div>
@@ -104,8 +48,6 @@ const SignUp = () => {
                                     name="email"
                                     placeholder="E-mail"
                                     className="w-full p-2 mt-8 rounded-xl border"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                             <div>
@@ -114,8 +56,6 @@ const SignUp = () => {
                                     name="password"
                                     placeholder="Password"
                                     className="w-full p-2 mt-8 rounded-xl border"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
                             {/* <div className='mt-8 flex flex-col gap-4'>
@@ -146,4 +86,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default Account

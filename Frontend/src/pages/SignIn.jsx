@@ -31,6 +31,7 @@ const SignIn = () => {
             const token = data.token;
             if(token){
                 localStorage.setItem("token", token);
+                localStorage.setItem("user", data.user.last_name);
                 navigate("/");
             }
         })

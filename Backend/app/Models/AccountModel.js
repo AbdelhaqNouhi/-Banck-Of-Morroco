@@ -20,6 +20,11 @@ const Account = mongoose.model (
             default: 0.00,
         },
 
+        agency: {
+            type: String,
+            required: [true, 'Please add an agency'],
+        },
+
         Maker: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",

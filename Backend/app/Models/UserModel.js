@@ -6,20 +6,25 @@ const User = mongoose.model(
     "User",
     new mongoose.Schema({
 
-        full_name: {
+        first_name: {
             type: String,
             required: [true, 'Please add a first name'],
         },
 
-        phone: {
+        last_name: {
             type: String,
-            required: [true, 'Please add a phone number']
+            required: [true, 'Please add a last name'],
         },
 
         cin: {
             type: String,
             required: [true, 'Please add a CIN'],
             unique: true
+        },
+
+        phone: {
+            type: String,
+            required: [true, 'Please add a phone number']
         },
 
         email: {

@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink } from "react-router-dom"; 
 
 function NavBar() {
+
     const [navbar, setNavbar] = useState(false);
     const [openAuthModal, setOpenAuthModal] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
+    const lastName = localStorage.getItem("user");
 
     const sign_out = () => {
         setIsLogged(false);
@@ -109,25 +111,27 @@ function NavBar() {
                         </li>
                         <li>
                             <NavLink 
-                                to={"/about"} 
+                                to={"/acount"} 
                                 className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
-                                About Us
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to={"/contact"}
-                                className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent')} >
-                                Contact
+                                Acount
                             </NavLink>
                         </li>
 
                         {isLogged ? (
-                            <li onClick={() => logOut()}>
-                                <div className= "block py-3 px-4 cursor-pointer hover:scale-105 duration-300 bg-blue-500 text-white rounded-md">
-                                    Log Out
-                                </div>
-                            </li>
+                            <>
+                                <li>
+                                    <NavLink
+                                        to={"/contact"}
+                                        className={({ isActive }) => (isActive ? 'block py-2 pl-3 pr-4 text-white md:bg-transparent md:text-blue- hover:text-primary md:p-0 dark:text-white border-b-2 border-blue-500' : 'block py-2 pl-3 pr-4 rounded md:hover:bg-transparent md:hover:text-blue-700 hover:text-primary md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent border-b-2 border-blue-500')} >
+                                        {lastName}
+                                    </NavLink>
+                                </li>
+                                <li onClick={() => logOut()}>
+                                    <div className="block py-3 px-4 cursor-pointer hover:scale-105 duration-300 bg-blue-500 text-white rounded-md">
+                                        Log Out
+                                    </div>
+                                </li>
+                            </>
                         ) : (
                             <li onClick={() => Auth_modal()}>
                                 <NavLink
