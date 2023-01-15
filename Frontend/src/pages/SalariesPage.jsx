@@ -3,6 +3,7 @@ import SalariesImg from '../assets/images/img/Salaries.jpg'
 import { Link, NavLink } from "react-router-dom";
 import Select from "react-select";
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const SalariesPage = () => {
     const fullname = localStorage.getItem("lastName") + " " + localStorage.getItem("firstName");
@@ -24,6 +25,29 @@ export const SalariesPage = () => {
         { value: 'Khouribga', label: 'Khouribga' },
         { value: 'Taza', label: 'Taza' },
     ];
+
+    const navigate = useNavigate();
+    const [Type, setType] = useState("Entrepreneur");
+    const [Agency, setAgency] = useState("");
+    const [Maker, setMaker] = useState(localStorage.getItem("user_id"));
+
+    const SetAccount = async (e) => {
+        e.preventDefault();
+        const Account = { Type, Agency, Maker };
+
+        await fetch("http://localhost:3000/Api/CreateAccount", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(Account)
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data) {
+                    navigate("/profile");
+                }
+            })
+            .catch((err) => console.log(err.message));
+    };
 
     return (
         <div className='flex flex-col'>
@@ -49,15 +73,15 @@ export const SalariesPage = () => {
                             <div className='font-bold  border-b-2 border-black-500 w-32'>
                                 {fullname}
                             </div>
-                            <form className="flex flex-col gap-2">
+                            <form onSubmit={SetAccount} className="flex flex-col gap-2">
                                 <div className='mt-6 flex flex-col gap-4'>
                                     <label className='font-bold'>Your Account Type*</label>
                                     <input
                                         type="text"
                                         name="type"
                                         className="w-full p-2 rounded-xl border"
-                                        value="Entrepreneur"
-
+                                        value={Type}
+                                        onChange={(e) => Type(e.target.value)}
                                     />
                                 </div>
                                 <div className='mt-8 flex flex-col gap-4'>
@@ -69,6 +93,8 @@ export const SalariesPage = () => {
                                         isClearable={true}
                                         isSearchable={true}
                                         placeholder="Select Agency"
+                                        value={Agency.value}
+                                        onChange={(e) => setAgency(e.value)}
                                     />
                                 </div>
                                 <button className="hover:scale-105 duration-300 bg-blue-500 text-white rounded-md py-2 mt-4">

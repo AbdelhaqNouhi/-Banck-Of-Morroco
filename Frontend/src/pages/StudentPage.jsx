@@ -3,6 +3,7 @@ import StudentsImg from '../assets/images/img/Student.jpg'
 import { Link, NavLink } from "react-router-dom";
 import Select from "react-select";
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StudentPage = () => {
     const fullname = localStorage.getItem("lastName") + " " + localStorage.getItem("firstName");
@@ -25,6 +26,7 @@ const StudentPage = () => {
         { value: 'Taza', label: 'Taza' },
     ];
 
+    const navigate = useNavigate();
     const [Type, setType] = useState("Student");
     const [Agency, setAgency] = useState("");
     const [Maker, setMaker] = useState(localStorage.getItem("user_id"));
@@ -41,11 +43,10 @@ const StudentPage = () => {
         .then((res) => res.json())
         .then((data) => {
             if(data){
-                console.log(data);
-            } else {
-                console.log(err.message);
+                navigate("/profile");
             }
         })
+        .catch((err) => console.log(err.message));
     };
 
     return (

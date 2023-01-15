@@ -7,7 +7,7 @@ import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
 import StudentPage from "./pages/StudentPage"
 import SalariesPage from "./pages/SalariesPage"
-// import Acount from "./pages/Account"
+import Profile from "./pages/Profile"
 
 import ErrorPage from './pages/ErrorPage'
 
@@ -20,7 +20,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/acount" element={<Acount />} /> */}
+          <Route path="/profile" element={<Profile />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />
