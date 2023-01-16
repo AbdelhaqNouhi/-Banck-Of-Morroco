@@ -28,6 +28,11 @@ const Account = mongoose.model (
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         },
+
+        CreatedAt: {
+            type: Date,
+            default: Date.now,
+        },
     })
 );
 

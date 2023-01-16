@@ -6,7 +6,7 @@ function NavBar() {
     const [navbar, setNavbar] = useState(false);
     const [openAuthModal, setOpenAuthModal] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
-    const lastName = localStorage.getItem("lastName");
+    const lastName = localStorage.getItem("firstName");
 
     const sign_out = () => {
         setIsLogged(false);
@@ -27,6 +27,9 @@ function NavBar() {
 
     const logOut = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("firstName");
+        localStorage.removeItem("lastName");
+        localStorage.removeItem("id");
         setIsLogged(false);
     };
     

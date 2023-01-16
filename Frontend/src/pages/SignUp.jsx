@@ -2,7 +2,8 @@ import React from 'react'
 import { Link, NavLink } from "react-router-dom"; 
 import { useLottie } from "lottie-react";
 import lottie from '../assets/lottie/registered.json';
-import { useState, useRef } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
     const options = {
@@ -11,30 +12,28 @@ const SignUp = () => {
     };
     const { View } = useLottie(options);
 
-    const [data, setData] = useState({
-        first_name: "",
-        last_name: "",
-        cin: "",
-        phone: "",
-        email: "",
-        password: "",
-    });
+    const navigate = useNavigate();
+    const [first_name, setFirstName] = useState("");
+    const [last_name, setLastName] = useState("");
+    const [cin, setCin] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const Register = async (e) => {
         e.preventDefault();
-        const register =  { first_name, last_name, cin, phone, email, password };
+        const data = { first_name, last_name, cin, phone, email, password };
+        console.log(data);
 
         await fetch("http://localhost:3000/Api/RegisterUser", {
             method: "POST",
-            headers: {"Content-Type": "application/json"
-},
-            body: JSON.stringify(register)
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data)
         })
         .then((res) => res.json())
         .then((data) => {
             if (data) {
-                console.log(data);
-                alert("You are registered successfully");
+                navigate("/SignIn");
             }
         })
         .catch((err) => {
@@ -58,16 +57,16 @@ const SignUp = () => {
                                     name="first_name"
                                     placeholder="First Name"
                                     className="p-2 rounded-xl border w-1/2"
-                                    value={data.first_name}
-                                    onChange={(e) => setData({first_name: e.target.value })}
+                                    value={first_name}
+                                    onChange={(e) => setFirstName(e.target.value)}
                                 />
                                 <input 
                                     type="text"
                                     name="last_name"
                                     placeholder="Last Name"
                                     className="p-2 rounded-xl border w-1/2"
-                                    value={data.last_name}
-                                    onChange={(e) => setData({last_name: e.target.value})}
+                                    value={last_name}
+                                    onChange={(e) => setLastName(e.target.value)}
                                 />
                             </div>
                             <div className='flex gap-8'>
@@ -76,16 +75,16 @@ const SignUp = () => {
                                     name="cin"
                                     placeholder="CIN"
                                     className="p-2 mt-8 rounded-xl border w-1/2"
-                                    value={data.cin}
-                                    onChange={(e) => setData({cin: e.target.value})}
+                                    value={cin}
+                                    onChange={(e) => setCin(e.target.value)}
                                 />
                                 <input
                                     type="phone"
                                     name="phone"
                                     placeholder="Phone"
                                     className="p-2 mt-8 rounded-xl border w-1/2"
-                                    value={data.phone}
-                                    onChange={(e) => setData({phone: e.target.value})}
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
                                 />
                             </div>
                             <div>
@@ -94,8 +93,8 @@ const SignUp = () => {
                                     name="email"
                                     placeholder="E-mail"
                                     className="w-full p-2 mt-8 rounded-xl border"
-                                    value={data.email}
-                                    onChange={(e) => setData({email: e.target.value})}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                             <div>
@@ -104,8 +103,8 @@ const SignUp = () => {
                                     name="password"
                                     placeholder="Password"
                                     className="w-full p-2 mt-8 rounded-xl border"
-                                    value={data.password}
-                                    onChange={(e) => setData({password: e.target.value})}
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
                             <button className="hover:scale-105 duration-300 bg-blue-500 text-white rounded-md py-2 mt-4">
