@@ -16,15 +16,15 @@ app.use(express.json({
     limit: "15kb",
 }));
 
-const limiter = rateLimit({
-    max: 150,
-    windowMs: 60 * 60 * 1000,
-    message: {
-        status: "fail",
-        message: "Too many requests from this IP, please try again in an hour!",
-    },
-});
-app.use("/api", limiter);
+// const limiter = rateLimit({
+//     max: 150,
+//     windowMs: 60 * 60 * 1000,
+//     message: {
+//         status: "fail",
+//         message: "Too many requests from this IP, please try again in an hour!",
+//     },
+// });
+// app.use("/api", limiter);
 
 // inetialize routes
 require("./app/Routes/index.routes")(app, "/api");

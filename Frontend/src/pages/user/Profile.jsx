@@ -40,9 +40,7 @@ const Profile = () => {
                         {/* <!-- About Section --> */}
                         <UserInfo />
                         {/* <!-- DataTable --> */}
-                        <div class="bg-white p-3 shadow-sm rounded-sm">
-
-                        </div>
+                        
                     </div>
                 </div>
             </div>
