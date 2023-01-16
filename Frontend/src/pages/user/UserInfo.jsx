@@ -7,10 +7,11 @@ const UserInfo = () => {
     const id = localStorage.getItem('user_id')
     
     const [showMore, setShowMore] = useState(false)
+    const [clickhide, setClickHide] = useState(true)
 
     const clickShow = () => {
         setShowMore(true)
-        console.log(showMore);
+        setClickHide(false)
     }
 
     const getAccount = async () => {
@@ -135,9 +136,13 @@ const UserInfo = () => {
                     </div>   
                 ))}
             </div>
-            <button onClick={clickShow} class="cursor-pointer hover:scale-120 block w-full text-blue-500 text-sm font-semibold rounded-lg hover:bg-blue-500 hover:text-white p-3 my-4">Show
-                Full Information
-            </button>
+            {!showMore ? (
+                <button onClick={clickShow} class="cursor-pointer hover:scale-120 block w-full text-blue-500 text-sm font-semibold rounded-lg hover:bg-blue-500 hover:text-white p-3 my-4">Show
+                    Full Information
+                </button>
+            ) : (
+                ''
+            )}
         </div>
     )
 }
