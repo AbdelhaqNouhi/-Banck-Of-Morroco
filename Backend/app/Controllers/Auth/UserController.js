@@ -12,7 +12,7 @@ const GetAllUser = asyncHandler(async (req, res) => {
 
     } catch (err) {
         console.error('Error: ' + err.message)
-        res.status(401).json({ status: "fail" , message: err.message})
+        res.status(401).json({ status: "fail", message: err.message })
     }
 })
 
@@ -46,14 +46,14 @@ const RegisterUser = asyncHandler(async (req, res) => {
         res.status(401)
         throw new Error("please add all fields")
     }
-    
+
     // check if user exists by email
     const UserExists = await UserModule.findOne({ email })
-    
+
     if (UserExists) {
         res.status(401).json({ status: "user already exists" })
     }
-    
+
     // check if user exists by cin
     const UserExistsByCin = await UserModule.findOne({ cin })
 
@@ -70,7 +70,7 @@ const RegisterUser = asyncHandler(async (req, res) => {
         const user = await UserModule.create({ first_name, last_name, cin, phone, email, password: HashPassword })
         res.status(201).json(user)
     }
-    catch(err) {
+    catch (err) {
         const errors = handleErrors(err)
         res.status(401).json({ errors })
     }

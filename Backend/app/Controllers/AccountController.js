@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const AccountModule = require('../Models/AccountModel');
+const UserModel = require('../Models/UserModel');
 
 
 const handleErrors = (err) => {
@@ -56,6 +57,7 @@ const CreateAccount = asyncHandler(async (req, res) => {
         const account = await AccountModule.create(req.body);
         res.status(201).json(account)
     } catch (err) {
+        console.log(err.message);
         const errors = handleErrors(err)
         res.status(401).json({ errors})
     }
@@ -70,6 +72,18 @@ const UpdateAccount = asyncHandler(async (req, res) => {
         res.status(401).json({ message: "Account not found" })
     }
 
+    const user = await UserModel.findById(req.user.id);
+
+    // check if user exists
+    if (!user) {
+        res.status(401).json({ message: "User not found" })
+    }
+
+    // check if user is the maker of the account
+    if (user.id !== account.Maker.toString()) {
+        res.status(401).json({ message: "Not authorized to update this account" })
+    }
+
     const UpdateAccount = await AccountModule.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
@@ -79,14 +93,31 @@ const UpdateAccount = asyncHandler(async (req, res) => {
 })
 
 const DeleteAccount = asyncHandler(async (req, res) => {
-    
-    try {
-        const account = await AccountModule.findByIdAndDelete(req.params.id);
-        res.status(201).json({ id: req.params.id, message: "Deleted account" })
-    } catch (err) {
-        console.error('Error: ' + err.message)
-        res.status(401).json({ status: "fail" , message: err.message})
+
+    const account = await AccountModule.findById(req.params.id);
+
+    if (!account) {
+        res.status(401).json({ message: "Account not found" })
     }
+
+    const user = await UserModel.findById(req.user.id);
+
+    // check if user exists
+    if (!user) {
+        res.status(401).json({ message: "User not found" })
+    }
+
+    // check if user is the maker of the account
+    if (user.id !== account.Maker.toString()) {
+        res.status(401).json({ message: "Not authorized to delete this account" })
+    }
+
+    const DeleteAccount = await AccountModule.findByIdAndDelete(req.params.id,{
+        new: true,
+        runValidators: true
+    })
+
+    res.status(201).json(DeleteAccount.id)
 })
 
 module.exports = {
