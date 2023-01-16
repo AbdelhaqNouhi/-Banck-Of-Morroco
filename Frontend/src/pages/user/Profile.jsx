@@ -19,7 +19,7 @@ const Profile = () => {
                                     <svg onClick={() => setOpenUploadModal(true)} className='absolute top-1 right-0 cursor-pointer' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                         width="35" height="35"
                                         viewBox="0 0 4335 4335">
-                                        <path fill="#2980b9" d="M2104 221c1087,0 1968,881 1968,1968 0,1087 -881,1968 -1968,1968 -1087,0 -1968,-881 -1968,-1968 0,-1087 881,-1968 1968,-1968z"></path><path fill="#fcfcfc" d="M2909 1686l-296 -296 -192 192 296 296 192 -192zm-544 -48l-1063 1063 -2 285 310 -2 1051 -1051 -296 -296z"></path>
+                                        <path fill="#4c8dff" d="M2104 221c1087,0 1968,881 1968,1968 0,1087 -881,1968 -1968,1968 -1087,0 -1968,-881 -1968,-1968 0,-1087 881,-1968 1968,-1968z"></path><path fill="#fcfcfc" d="M2909 1686l-296 -296 -192 192 296 296 192 -192zm-544 -48l-1063 1063 -2 285 310 -2 1051 -1051 -296 -296z"></path>
                                     </svg>
                                 </div>
                                 <div class="text-center mt-2 text-3xl font-medium">{ fullname }</div>

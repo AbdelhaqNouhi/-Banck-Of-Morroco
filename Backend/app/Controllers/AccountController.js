@@ -28,13 +28,16 @@ const GetAllAccount = asyncHandler(async (req, res) => {
 
 const GetAccountByUserId = asyncHandler(async (req, res) => {
 
-    try {
-        const account = await AccountModule.find({ Maker: req.params.id }).populate('Maker');
-        res.status(201).json(account)
-    } catch (err) {
-        const errors = handleErrors(err)
-        res.status(401).json({ errors})
-    }
+    //  get account by user id not make a password
+    const account = await AccountModule.find({ Maker: req.params.id }).populate('Maker');
+    res.status(201).json(account )
+    // try {
+    //     const account = await AccountModule.find({ Maker: req.params.id }).populate('Maker');
+    //     res.status(201).json(account )
+    // } catch (err) {
+    //     const errors = handleErrors(err)
+    //     res.status(401).json({ errors})
+    // }
 })
 
 
