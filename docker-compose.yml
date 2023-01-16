@@ -1,23 +1,12 @@
 version: "3"
 services:
 
-  frontend:
-    build:
-      context: frontend
-    ports:
-      - 3000:3000
-    volumes:
-      - ./:/frontend
-    stdin_open: true
-    depends_on:
-      - backend
-
   backend:
     build: ./backend
     volumes:
       - ./:/backend
     ports:
-      - 4000:3000
+      - 3000:3000
     environment:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
@@ -36,6 +25,17 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: admin
     ports:
       - 27018:27017
+  
+  frontend:
+    build:
+      context: frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/frontend
+    stdin_open: true
+    depends_on:
+      - backend
 
 volumes:
   mongo_db:

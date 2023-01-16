@@ -66,7 +66,7 @@ export const SalariesPage = () => {
                     <div className="md:w-3/4 w-screen md:px-16 flex rounded-2xl shadow-lg max-w-3/1 items-center p-4">
                         <div className="md:w-4/5 w-screen px-16 flex flex-col gap-8">
                             <div>
-                                <h2 className="font-bold text-2xl text-blue-500"> Open Your Student Account</h2>
+                                <h2 className="font-bold text-2xl text-blue-500"> Open Your Entrepreneur Account</h2>
                                 <p className="text-sm mt-4">
                                     And enjoy a unique experience.
                                 </p>

@@ -1,10 +1,10 @@
 FROM node:17-alpine
 
-WORKDIR /usr/src/app
+RUN npm install -g nodemo
 
-COPY package*.json ./
+WORKDIR /src
 
-RUN npm install
+COPY package.json .
 
 COPY . .
 
