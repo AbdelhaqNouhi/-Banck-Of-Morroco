@@ -70,7 +70,7 @@ const StudentPage = () => {
                                     And enjoy a unique experience.
                                 </p>
                             </div>
-                            <div className='font-bold text-blue-500 border-b-2 border-blue-500'>
+                            <div className='font-bold border-b-2 border-black-500 w-32'>
                                 {fullname}
                             </div>
                             <form onSubmit={SetAccount} className="flex flex-col gap-2">
@@ -105,7 +105,7 @@ const StudentPage = () => {
                             <p className="mt-5 text-xs border-b border-gray-400 py-4"></p>
                             <div className="mt-3 text-xs flex justify-between items-center">
                                 <p >Go To..</p>
-                                <Link to="/SignIn"><button className="hover:scale-105 duration-300 py-2 px-5 bg-white hover:text-black border rounded-xl"> Profile </button></Link>
+                                <Link to="/profile"><button className="hover:scale-105 duration-300 py-2 px-5 bg-white hover:text-black border rounded-xl"> Profile </button></Link>
                             </div>
                         </div>
                     </div>

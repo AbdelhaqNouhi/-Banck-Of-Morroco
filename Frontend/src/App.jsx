@@ -7,7 +7,7 @@ import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
 import StudentPage from "./pages/StudentPage"
 import SalariesPage from "./pages/SalariesPage"
-import Profile from "./pages/Profile"
+import Profile from "./pages/user/Profile"
 
 import ErrorPage from './pages/ErrorPage'
 
