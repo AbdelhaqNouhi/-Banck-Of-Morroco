@@ -98,6 +98,16 @@ const UserInfo = () => {
                                     <div className='flex flex-col gap-12'>
                                         <div class="text-sm gap-80 flex justify-between">
                                             <div class="grid grid-cols-2 gap-64">
+                                                <div class="px-4 py-2 font-semibold w-96">Created By*</div>
+                                                <div class="px-4 py-2 ml-2">{item.Maker.first_name}{item.Maker.last_name}</div>
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-64">
+                                                <div class="px-4 py-2 font-semibold w-96">Created At*</div>
+                                                <div class="px-4 py-2">{item.CreatedAt}</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-sm gap-80 flex justify-between">
+                                            <div class="grid grid-cols-2 gap-64">
                                                 <div class="px-4 py-2 font-semibold w-96">Account Type*</div>
                                                 <div class="px-4 py-2 ml-2">{item.Type}</div>
                                             </div>
@@ -114,16 +124,6 @@ const UserInfo = () => {
                                             <div class="grid grid-cols-2 gap-64">
                                                 <div class="px-4 py-2 font-semibold w-96">Balance*</div>
                                                 <div class="px-4 py-2">{item.Balance}</div>
-                                            </div>
-                                        </div>
-                                        <div class="text-sm gap-80 flex justify-between">
-                                            <div class="grid grid-cols-2 gap-64">
-                                                <div class="px-4 py-2 font-semibold w-96">First Name</div>
-                                                <div class="px-4 py-2 ml-2">{item.Maker.first_name}</div>
-                                            </div>
-                                            <div class="grid grid-cols-2 gap-64">
-                                                <div class="px-4 py-2 font-semibold w-96">Last Name</div>
-                                                <div class="px-4 py-2">{item.Maker.last_name}</div>
                                             </div>
                                         </div>
                                     </div>
