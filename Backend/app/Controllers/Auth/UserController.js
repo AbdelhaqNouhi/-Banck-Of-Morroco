@@ -110,7 +110,7 @@ const LoginUser = asyncHandler(async (req, res) => {
     }
 
     // create token
-    const token = JWt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = JWt.sign({ id:user._id }, process.env.JWT_SECRET, {
         expiresIn: 3600
     })
 
@@ -132,3 +132,8 @@ module.exports = {
     RegisterUser,
     LoginUser,
 }
+
+
+
+
+
